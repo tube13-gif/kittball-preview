@@ -1,0 +1,4 @@
+# Testphase auf neu.kittball.com (Runbook 3.2) — beim Umschalten auf
+# die Hauptdomain MUSS diese Datei durch robots-live.txt ersetzt werden!
+User-agent: *
+Disallow: /

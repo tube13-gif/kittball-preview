@@ -1,0 +1,330 @@
+# .htaccess kittball.com — erzeugt 10.08.2026 nach UMZUG-RUNBOOK.md
+# Weiterleitungen aus der echten Sitemap der Altseite (281 URLs), nichts geraten.
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+</IfModule>
+
+# --- noindex NUR auf der Testsubdomain (Runbook 3.2). Beim Umschalten
+# --- bleibt der Block drin: die Bedingung greift auf kittball.com nicht.
+<IfModule mod_headers.c>
+<If "%{HTTP_HOST} == 'neu.kittball.com'">
+  Header set X-Robots-Tag "noindex, nofollow"
+</If>
+</IfModule>
+
+# --- Alte URLs -> neue Ziele (Releases/Events/Videos auf die Rubrik-Anker,
+# --- bis /catalogue existiert; Shop-Dummies und Sonstiges auf die Wurzel)
+
+Redirect 301 /custom-404/ /
+Redirect 301 /maintenance/ /
+Redirect 301 /terms-condition/ /
+Redirect 301 /privacy-policy/ /datenschutz/
+Redirect 301 /discography/ /
+Redirect 301 /events/ /#live
+Redirect 301 /videos/ /#watch
+Redirect 301 /impressum/ /impressum/
+Redirect 301 /datenschutzerklaerung/ /datenschutz/
+Redirect 301 /livestreams/ /
+Redirect 301 /nft/ /
+Redirect 301 /release/blue-jeans/ /#records
+Redirect 301 /release/if-i-give-it-to-you/ /#records
+Redirect 301 /release/drowning/ /#records
+Redirect 301 /release/lego/ /#records
+Redirect 301 /release/connect-us-all/ /#records
+Redirect 301 /release/now/ /#records
+Redirect 301 /release/my-thang/ /#records
+Redirect 301 /release/abataka-magdalena-remix/ /#records
+Redirect 301 /release/juliet-sikora-umdanso-it-began-in-africa/ /#records
+Redirect 301 /release/various-artists-it-began-in-africa-vol-3/ /#records
+Redirect 301 /release/mescal-kids-friends-ep/ /#records
+Redirect 301 /release/marc-werner-panik-pop-uji-ep/ /#records
+Redirect 301 /release/matt-fontaine-kalamita-its-nothing-ep/ /#records
+Redirect 301 /release/dmitri-saidi-sinner-james-dis-poem-ep/ /#records
+Redirect 301 /release/tini-gessler-no-deeper-feeling-ep/ /#records
+Redirect 301 /release/tube-berger-free-tribe-2-0/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-18/ /#records
+Redirect 301 /release/chris-di-perri-jj-thomson/ /#records
+Redirect 301 /release/steve-hope-paradise-garage/ /#records
+Redirect 301 /release/marco-lys-pull-me-down-ep/ /#records
+Redirect 301 /release/dayne-s-ante-perry-imyd-veraloga/ /#records
+Redirect 301 /release/george-privatti-fugas/ /#records
+Redirect 301 /release/juliet-sikora-ashibah-pain-in-my-brain/ /#records
+Redirect 301 /release/best-of-15-years-of-kittball/ /#records
+Redirect 301 /release/nils-koenig-knopfloch-kombinat-here-and-now/ /#records
+Redirect 301 /release/simon-kidzoo-the-deepshakerz-weird-chant/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-19/ /#records
+Redirect 301 /release/ashibah-jean-bacarreza-suave-ep/ /#records
+Redirect 301 /release/tube-berger-feat-like-mike-pineapple-tacos/ /#records
+Redirect 301 /release/best-of-it-began-in-africa/ /#records
+Redirect 301 /release/marc-werner-i-need-you-incl-david-keno-remix/ /#records
+Redirect 301 /release/4637/ /#records
+Redirect 301 /release/otistic-down-ep/ /#records
+Redirect 301 /release/miguel-bastida-xaxaxa/ /#records
+Redirect 301 /release/lexlay-boogie-ep-incl-piem-and-russ-yallop-remix/ /#records
+Redirect 301 /release/freedom-b-cocktail-damore/ /#records
+Redirect 301 /release/juliet-sikora-diva-disco/ /#records
+Redirect 301 /release/morpei-jean-bacarreza-asi-me-gusta-incl-saffron-stone-remix/ /#records
+Redirect 301 /release/wally-lopez-dancefloor-tales-ep/ /#records
+Redirect 301 /release/amy-lauren-vanilla-ace-bang-the-drum-ep/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-20/ /#records
+Redirect 301 /release/raumakustik-broke-ep/ /#records
+Redirect 301 /release/the-deepshakerz-twitch-ep/ /#records
+Redirect 301 /release/juliet-sikora-chris-di-perri-ghetto-gospel/ /#records
+Redirect 301 /release/killed-kassette-oliver-knight-do-me-wrong-ep/ /#records
+Redirect 301 /release/best-of-kittball/ /#records
+Redirect 301 /release/4968/ /#records
+Redirect 301 /release/simon-kidzoo-hammer-ep/ /#records
+Redirect 301 /release/moonbootica-a-changes-gonna-come-ep/ /#records
+Redirect 301 /release/steve-hope-danny-at-the-brooklyn-way-ep/ /#records
+Redirect 301 /release/viddsan-necessary-ep/ /#records
+Redirect 301 /release/marie-bloomfield-fiesta-incl-tinush-remix/ /#records
+Redirect 301 /release/juliet-sikora-wally-lopez-ardilla/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-22/ /#records
+Redirect 301 /release/chris-di-perri-when-im-in-it-ep/ /#records
+Redirect 301 /release/5095/ /#records
+Redirect 301 /release/marc-werner-10in01/ /#records
+Redirect 301 /release/tube-berger-x-mat-joe-x-tex-amos-now-is-not-forever/ /#records
+Redirect 301 /release/miguel-bastida-latin-excursion-ep/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-23/ /#records
+Redirect 301 /release/havoc-lawn-this-vibe-ep/ /#records
+Redirect 301 /release/juliet-sikora-let-loose-ep/ /#records
+Redirect 301 /release/best-of-kittball-vol-6/ /#records
+Redirect 301 /release/salvatore-bruno-brazilectro-ep/ /#records
+Redirect 301 /release/moonbootica-ante-perry-so-simple-incl-robosonic-remix/ /#records
+Redirect 301 /release/5257/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-24/ /#records
+Redirect 301 /release/juliet-sikora-reflection-incl-mitch-remix/ /#records
+Redirect 301 /release/marvin-aloys-last-night-incl-ante-perry-remix/ /#records
+Redirect 301 /release/salvatore-bruno-puerta-del-sol-ep/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-25/ /#records
+Redirect 301 /release/tube-berger-rbbn-fade-away/ /#records
+Redirect 301 /release/ante-perry-starlight-incl-flo-mrzdk-juliet-sikora-remix/ /#records
+Redirect 301 /release/the-deepshakerz-feat-aaron-pfeiffer-the-last-song-incl-juliet-sikora-remix/ /#records
+Redirect 301 /release/raumakustik-ongemach-wild-cat/ /#records
+Redirect 301 /release/chuckie-hustle/ /#records
+Redirect 301 /release/thomas-newson-hold-em-feat-rion-s/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-26/ /#records
+Redirect 301 /release/best-of-kittball-vol-7/ /#records
+Redirect 301 /release/defex-jade-praize-bite-me-back/ /#records
+Redirect 301 /release/warm-up-essentials-vol-1/ /#records
+Redirect 301 /release/the-deepshakerz-dj-rae-body-talk/ /#records
+Redirect 301 /release/defex-jade-praize-bite-me-back-remixes/ /#records
+Redirect 301 /release/tube-berger-simon-field-nick-schwenderling-wasting-away/ /#records
+Redirect 301 /release/best-of-kittball-summer-essentials/ /#records
+Redirect 301 /release/thomas-newson-havoc-lawn-blow-up-ep/ /#records
+Redirect 301 /release/raumakustik-pray-for-you/ /#records
+Redirect 301 /release/alex-lauthals-breaks/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-27/ /#records
+Redirect 301 /release/the-deepshakerz-juliet-sikora-saturday-feat-dennis-wonder/ /#records
+Redirect 301 /release/manuel-de-la-mare-luigi-rocca-get-together/ /#records
+Redirect 301 /release/warm-up-essentials-vol-2/ /#records
+Redirect 301 /release/lefti-boom-diggi-ep/ /#records
+Redirect 301 /release/diego-barrera-filthy-ep/ /#records
+Redirect 301 /release/best-of-kittball-secret-weapons/ /#records
+Redirect 301 /release/nick-schwenderling-call-you/ /#records
+Redirect 301 /release/juliet-sikora-mat-joe-feat-john-g-jah-love/ /#records
+Redirect 301 /release/tube-berger-juliet-sikora-come-on-now-set-it-off-tony-romera-remix/ /#records
+Redirect 301 /release/warm-up-essentials-vol-3/ /#records
+Redirect 301 /release/lovd-techno-ganoven-all-i-want/ /#records
+Redirect 301 /release/aestro-salvatore-papa-feel-you-ep/ /#records
+Redirect 301 /release/tube-berger-time-to-push-the-propaganda/ /#records
+Redirect 301 /release/versus-allan-nunez-ft-mathieu-ruz-tiene-fuego-incl-remix-by-marc-werner/ /#records
+Redirect 301 /release/nicone-david-hasert-you-had-it-all/ /#records
+Redirect 301 /release/salvatore-bruno-tennan-babela/ /#records
+Redirect 301 /release/tube-berger-no-phones/ /#records
+Redirect 301 /release/leo-berr-i-want-your-love/ /#records
+Redirect 301 /release/warm-up-essentials-vol-4/ /#records
+Redirect 301 /release/j-matin-paradise-ep/ /#records
+Redirect 301 /release/spielmann-mi-amor/ /#records
+Redirect 301 /release/kittball-konspiracy-vol-28/ /#records
+Redirect 301 /release/spielmann-mi-amor-incl-remixes-by-lalena-david-hasert-ooshmann/ /#records
+Redirect 301 /release/juliet-sikora-fifth-dimension/ /#records
+Redirect 301 /release/tube-berger-a-little-higher/ /#records
+Redirect 301 /release/warm-up-essentials-vol-5/ /#records
+Redirect 301 /event/kitt-day-night-2019/ /#live
+Redirect 301 /event/perfect-vodka-amphitheatre-2018/ /#live
+Redirect 301 /event/kittball-pres-it-began-vol-3/ /#live
+Redirect 301 /event/kittball-rooftop-session-x-zehn-records/ /#live
+Redirect 301 /event/juicy-beats-festival-dortmund-ger/ /#live
+Redirect 301 /event/pollerwiesen-festival/ /#live
+Redirect 301 /event/kittball-day-night-festival/ /#live
+Redirect 301 /event/4479/ /#live
+Redirect 301 /event/kittball-kultur-cafe-1-2/ /#live
+Redirect 301 /event/kittball-day-festival/ /#live
+Redirect 301 /event/techno-dampfer-w-tube-berger-pres-15y-kittball/ /#live
+Redirect 301 /event/barfuss-am-strand-x-kittball-showcase-live/ /#live
+Redirect 301 /event/kittball-labelnight-pratersauna-wien/ /#live
+Redirect 301 /event/kittball-showcase-fusion/ /#live
+Redirect 301 /event/kittball-rooftop-session/ /#live
+Redirect 301 /event/kittball-rooftop-session-3/ /#live
+Redirect 301 /event/kittball-labelnight/ /#live
+Redirect 301 /event/kittball-labelnight-postgarage-graz/ /#live
+Redirect 301 /event/kittball-showcase-ritter-butzke/ /#live
+Redirect 301 /event/kittball-x-monaberry-showcase/ /#live
+Redirect 301 /event/kittball-x-techno-dampfer-boat-trip/ /#live
+Redirect 301 /event/luft-liebe-festival-kittball-stage/ /#live
+Redirect 301 /event/docklands-festival-kittball-stage/ /#live
+Redirect 301 /event/paluma-festival-kittball-stage/ /#live
+Redirect 301 /event/juicy-beats-festival-kittball-stage/ /#live
+Redirect 301 /event/kittball-day-night-festival-junkyard/ /#live
+Redirect 301 /event/juliet-sikora-pres-come-closer-and-dance/ /#live
+Redirect 301 /event/kittball-rooftop-session-1/ /#live
+Redirect 301 /event/kittball-rooftop-2/ /#live
+Redirect 301 /event/kittball-night-club-paula/ /#live
+Redirect 301 /event/kittball-rooftop-session-3-2/ /#live
+Redirect 301 /event/kittball-rooftop-session-4/ /#live
+Redirect 301 /event/kittball-rooftop-session-5/ /#live
+Redirect 301 /event/kittball-rooftop-session-6/ /#live
+Redirect 301 /event/kittball-rooftop-session-6-2/ /#live
+Redirect 301 /event/kittball-rooftop-session-8/ /#live
+Redirect 301 /event/kittball-rooftop-session-9/ /#live
+Redirect 301 /event/kittball-rooftop-session-10/ /#live
+Redirect 301 /event/kittball-rooftop-session-11/ /#live
+Redirect 301 /event/kittball-rooftop-session-12/ /#live
+Redirect 301 /event/kittball-rooftop-session-13/ /#live
+Redirect 301 /event/summersounds-dj-picknicks/ /#live
+Redirect 301 /event/kittball-festival-hamburg/ /#live
+Redirect 301 /event/kaiserstrassenfest/ /#live
+Redirect 301 /event/kittball-x-betonsafari-junkyard/ /#live
+Redirect 301 /event/juliet-sikora-pres-come-closer/ /#live
+Redirect 301 /event/kittball-rooftop-session-7-halloween-pre-party/ /#live
+Redirect 301 /event/come-closer-and-dance-pres-jingle-beats-by-juliet-sikora/ /#live
+Redirect 301 /event/kittball-rooftop-session-8-winter-season-opening/ /#live
+Redirect 301 /event/kittball-rooftop-session-winter-season/ /#live
+Redirect 301 /event/kittball-rooftop-session-winter-season-2/ /#live
+Redirect 301 /event/come-closer-and-dance-by-juliet-sikora/ /#live
+Redirect 301 /event/kittball-x-solar-x-thaibreak-junkyard/ /#live
+Redirect 301 /event/come-closer-and-dance-by-juliet-sikora-2/ /#live
+Redirect 301 /event/techno-dampfer-pres-kittball-records/ /#live
+Redirect 301 /event/kittball-clubnight-mokka-mitte-berlin/ /#live
+Redirect 301 /event/rooftop-session-1-season-opening/ /#live
+Redirect 301 /event/juicy-beats/ /#live
+Redirect 301 /event/rave-the-planet/ /#live
+Redirect 301 /event/rooftop-session-2/ /#live
+Redirect 301 /event/kittball-day-night-festival-x-junkyard/ /#live
+Redirect 301 /event/nature-one/ /#live
+Redirect 301 /event/kittball-float-afterparty-mokka/ /#live
+Redirect 301 /event/rooftop-session-3/ /#live
+Redirect 301 /event/rooftop-session-4/ /#live
+Redirect 301 /event/rooftop-session-6/ /#live
+Redirect 301 /event/kittball-x-palmlands-support-your-locals/ /#live
+Redirect 301 /event/kittball-day-night-festival-2024/ /#live
+Redirect 301 /event/kittball-x-palmlands-rooftop-session-7/ /#live
+Redirect 301 /event/juliet-sikora-pres-come-closer-and-dance-2/ /#live
+Redirect 301 /event/come-closer-and-dance-pres-jingle-beats-by-juliet-sikora-2/ /#live
+Redirect 301 /event/kittball-x-elsterartig/ /#live
+Redirect 301 /event/come-closer-and-dance-pres-by-juliet-sikora/ /#live
+Redirect 301 /event/techno-dampfer-x-kittball/ /#live
+Redirect 301 /event/techno-dampfer-x-kittball-2/ /#live
+Redirect 301 /event/techno-dampfer-x-kittball-cologne/ /#live
+Redirect 301 /event/come-closer-and-dance-pres-by-juliet-sikora-2/ /#live
+Redirect 301 /event/nature-one-festival-2024/ /#live
+Redirect 301 /event/rooftop-sessions-2/ /#live
+Redirect 301 /event/rooftop-session-7/ /#live
+Redirect 301 /event/rooftop-session-8/ /#live
+Redirect 301 /event/rooftop-session-9/ /#live
+Redirect 301 /event/rooftop-session-10/ /#live
+Redirect 301 /event/rooftop-sessions-11/ /#live
+Redirect 301 /event/rooftop-sessions-12/ /#live
+Redirect 301 /event/docklands-festival-2024/ /#live
+Redirect 301 /event/rave-the-planet-2024/ /#live
+Redirect 301 /event/juicy-beats-festival-kittball-stage-2/ /#live
+Redirect 301 /event/tickets-fur-phils-licks-kittball-present-drop-dance-society-barcelona/ /#live
+Redirect 301 /event/kittball-rooftop-session-3-public-viewing-em-finale/ /#live
+Redirect 301 /event/juliet-sikora-pres-come-closer-and-dance-3/ /#live
+Redirect 301 /event/kittball-day-night-festival-2025/ /#live
+Redirect 301 /event/come-closer-and-dance-pres-jingle-beats-by-juliet-sikora-2024/ /#live
+Redirect 301 /event/the-boogie-brunch-flashback-electronique-pres-by-juliet-sikora/ /#live
+Redirect 301 /event/kittball-x-sight/ /#live
+Redirect 301 /event/rooftop-session-1-winter-edition/ /#live
+Redirect 301 /event/20-years-of-kittball-clubnacht-at-junkyard/ /#live
+Redirect 301 /event/the-boogie-brunch-2-by-juliet-sikora/ /#live
+Redirect 301 /event/come-closer-x-thaibreak/ /#live
+Redirect 301 /event/juliet-sikora-pres-come-closer-and-dance-female-edition/ /#live
+Redirect 301 /event/rooftop-session-2-kittball-x-escape-2/ /#live
+Redirect 301 /event/rooftop-session-2-kittball-x-escape-ersatztermin/ /#live
+Redirect 301 /event/rooftop-session-nur-bei-gutem-wetter/ /#live
+Redirect 301 /event/kittball-x-thegate/ /#live
+Redirect 301 /event/20-years-of-kittball-x-prachtnacht/ /#live
+Redirect 301 /event/kittball-rooftop-session-x-antea/ /#live
+Redirect 301 /event/juicy-beats-2/ /#live
+Redirect 301 /event/kittball-rooftop-session-5-2/ /#live
+Redirect 301 /event/kittball-at-schrotty/ /#live
+Redirect 301 /event/kittball-x-moon-harbour-at-ade-2025/ /#live
+Redirect 301 /event/kittball-rooftop-6-summer-closing/ /#live
+Redirect 301 /playlist/playlist-1/ /
+Redirect 301 /playlist/playlist-2/ /
+Redirect 301 /content-block/header-elements/ /
+Redirect 301 /content-block/header-modules/ /
+Redirect 301 /content-block/footer-main/ /
+Redirect 301 /content-block/content-studio-endorsments-carousel-dark/ /
+Redirect 301 /content-block/header-shop/ /
+Redirect 301 /content-block/content-instagram/ /
+Redirect 301 /content-block/header-main/ /
+Redirect 301 /content-block/hader-release-wide-layout/ /
+Redirect 301 /video/the-boom-bap/ /#watch
+Redirect 301 /video/my-thang/ /#watch
+Redirect 301 /video/bulldozer-original-mix/ /#watch
+Redirect 301 /video/umdanso/ /#watch
+Redirect 301 /video/kittball-juicy-beats-2019/ /#watch
+Redirect 301 /product/woo-logo-2/ /
+Redirect 301 /product/zample-poster/ /
+Redirect 301 /product/product-mp3/ /
+Redirect 301 /product/product-on-sale/ /
+Redirect 301 /product/product-gallery/ /
+Redirect 301 /product/product-jutebeutel/ /
+Redirect 301 /product/woo-logo/ /
+Redirect 301 /product/product-out-of-stock/ /
+Redirect 301 /product/product-variable/ /
+Redirect 301 /product/product-sidebar/ /
+Redirect 301 /product/product-wide/ /
+Redirect 301 /product/product-default/ /
+Redirect 301 /product/product-custom-header/ /
+Redirect 301 /product/product-custom-layout/ /
+Redirect 301 /product/happy-ninja-2/ /
+Redirect 301 /product/product-grouped/ /
+Redirect 301 /content-block-category/content/ /
+Redirect 301 /content-block-category/footer/ /
+Redirect 301 /content-block-category/header/ /
+Redirect 301 /product-category/clothing/ /
+Redirect 301 /product-category/hoodies/ /
+Redirect 301 /product-category/men/ /
+Redirect 301 /product-category/t-shirts/ /
+Redirect 301 /product-category/women/ /
+Redirect 301 /product-category/bags/ /
+Redirect 301 /product-tag/cotton/ /
+Redirect 301 /product-tag/white/ /
+Redirect 301 /author/katsi/ /
+Redirect 301 /author/mahan/ /
+
+# --- Auffangregeln fuer nicht gelistete Alt-Pfade derselben Typen
+RedirectMatch 301 ^/release/.+$ /#records
+RedirectMatch 301 ^/event/.+$ /#live
+RedirectMatch 301 ^/product/.+$ /
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType text/html "access plus 10 minutes"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
