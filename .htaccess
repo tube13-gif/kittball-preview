@@ -3,10 +3,31 @@
 Options -Indexes
 DirectoryIndex index.html
 
+# --- Archiv der alten WordPress-Seite: liegt auf dem Server, wird aber
+# --- nicht ausgeliefert. Kein wp-login, kein readme, keine Indexierung.
+RedirectMatch 404 ^/_wp_alt(/.*)?$
+
+# --- Eigene Fehlerseite statt der deutschen Apache-Standardseite, die
+# --- die interne Serveradresse des Hosters angezeigt hat.
+ErrorDocument 404 /404.html
+
+# --- Versteckte Dateien und Ordner (.git, .env, Editorreste) sind nicht
+# --- abrufbar. Ausgenommen ist /.well-known/, das brauchen Zertifikate.
+RedirectMatch 404 "/\.(?!well-known)"
+
+# --- Auf dieser Seite laeuft kein PHP und kein CGI. Solche Anfragen werden
+# --- abgewiesen, bevor der Server sie ausfuehren koennte. Das gilt auch
+# --- fuer Sicherungs- und Konfigurationsreste.
+RedirectMatch 404 "\.(php[0-9]?|phtml|phar|pht|cgi|pl|py|sh|bak|old|orig|save|swp|sql|log|ini|yml|yaml|lock)$"
+
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteCond %{HTTPS} !=on
   RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+  # Nur die Methoden zulassen, die eine statische Seite braucht.
+  RewriteCond %{REQUEST_METHOD} !^(GET|HEAD|POST|OPTIONS)$
+  RewriteRule ^ - [F]
 </IfModule>
 
 # --- noindex NUR auf der Testsubdomain (Runbook 3.2). Beim Umschalten
@@ -327,4 +348,18 @@ RedirectMatch 301 ^/product/.+$ /
   Header set X-Content-Type-Options "nosniff"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+
+  # Die Seite darf nicht in fremde Rahmen eingebettet werden.
+  Header set X-Frame-Options "DENY"
+  Header set Cross-Origin-Opener-Policy "same-origin"
+
+  # Der Browser darf nur laden, was von dieser Seite selbst kommt.
+  # Kein fremdes Skript, kein fremdes Bild, kein Rahmen, kein Formularziel.
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; frame-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+
+  # HSTS: der Browser merkt sich, dass diese Seite nur verschluesselt
+  # erreichbar ist. Bewusst kurz gehalten (1 Tag), damit ein
+  # Zertifikatsproblem die Seite nicht tagelang unerreichbar macht.
+  # Erhoehen auf 31536000 erst, wenn das Zertifikat dauerhaft sauber ist.
+  Header always set Strict-Transport-Security "max-age=86400"
 </IfModule>
