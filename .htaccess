@@ -361,5 +361,8 @@ RedirectMatch 301 ^/product/.+$ /
   # erreichbar ist. Bewusst kurz gehalten (1 Tag), damit ein
   # Zertifikatsproblem die Seite nicht tagelang unerreichbar macht.
   # Erhoehen auf 31536000 erst, wenn das Zertifikat dauerhaft sauber ist.
-  Header always set Strict-Transport-Security "max-age=86400"
+  # 11.11.2026 (Sicherheitscheck): von 1 Tag auf 180 Tage erhoeht —
+  # HTTPS laeuft seit dem Livegang stabil (Zertifikat automatisch via
+  # Host Europe), die kurze Schonfrist ist nicht mehr noetig.
+  Header always set Strict-Transport-Security "max-age=15552000"
 </IfModule>
